@@ -7,7 +7,7 @@
   </head>
   <body>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-      <a class="navbar-brand" href="#">Top navbar</a>
+      <a class="navbar-brand" href="#">Angelita's</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -30,7 +30,8 @@
       <div class="row">
         <div class="col">
           <?php echo  $error; ?>
-          <?php echo form_open_multipart('Blog/add_action');?>
+          <?php echo  validation_errors() ?>
+        <?php echo form_open_multipart('Blog/add_view');?>
             <div class="form-group">
     <label for="id">Id</label>
     <input type="text" class="form-control" id="id" name="id" placeholder="Id">
