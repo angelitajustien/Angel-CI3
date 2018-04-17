@@ -40,6 +40,7 @@
       <?php echo $value['content'] ?>
       <br>
       <a href="<?php echo base_url('index.php/Blog/byId/'.$value['id']) ?>">View Details</a>
+      <a href="<?php echo base_url('index.php/Blog/update_view/'.$value['id']) ?>">Update </a>
     </div>
   </li>
   <?php endforeach ?>
