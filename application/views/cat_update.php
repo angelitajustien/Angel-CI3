@@ -33,16 +33,20 @@
     </nav>
 
     <main role="main" class="container">
-    <h1 class="text-center"><?php echo $records[0]['title'] ?></h1>
-    <h6 class="text-muted">Tanggal : <?php echo  $records[0]['date']  ?></h6>
-    <div class="row">
-          <div class="col-2"> </div>
-          <div class="col-8"> 
-    <img src="<?php echo  base_url() ?>uploads/<?php echo $records[0]['image_file']  ?>" alt=" " class="">
-          </div>
-          <div class="col-2"> </div>
-          <p><?php echo $records[0]['content'] ?></p>
-        </div>
+    <?php echo validation_errors() ?> 
+     <?php echo form_open( 'category/update/'.$cat_update['cat_id'], array('class' => 'needs-validation', 'novalidate' => '') ); ?> 
+ <div class="form-group"> 
+    <label for="cat_name">Nama Kategori</label> 
+    <input type="text" class="form-control" name="cat_name" value="<?php echo $cat_update['cat_name'] ?>" required> 
+    <div class="invalid-feedback">Isi judul dulu gan</div> 
+ </div> 
+
+ <div class="form-group"> 
+    <label for="text">Deskripsi</label> 
+    <input type="text" class="form-control" name="cat_description" value="<?php echo $cat_update['cat_description'] ?>" required> 
+    <div class="invalid-feedback">Isi deskripsinya dulu gan</div> 
+ </div> 
+ <button id="submitBtn" type="submit" class="btn btn-success">Ubah</button>
     </main>
   </body>    
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
