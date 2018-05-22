@@ -42,6 +42,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <a class="nav-link" href="<?php echo base_url('Blog/datatable') ?>">Blog Data Tables</a>
           </li>
         </ul>
+
+      <?php if($this->
+        session->userdata('user_loggedin')):?>
+          <div class="btn-group" role="group" aria-label="Data baru">
+      <?php echo anchor('User/login', 'Login', array('class' => 'btn btn-outline-light')); ?>
+          </div>
+      <?php endif; ?>
+
+      <?php if($this->
+        session->userdata('user_loggedin')):?>
+          <div class="btn-group" role="group" aria-label="Data baru">
+      <?php echo anchor('User/logout', 'Logout', array('class' => 'btn btn-outline-light')); ?>
+          </div>
+      <?php endif; ?>
+
       </div>
     </nav>
 
@@ -57,3 +72,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
          <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_loggedout').'</p>'; ?>
        <?php endif; ?>
 
+    <?php if(!$this->session->userdata('logged_in')) : ?>
+
+      <div class="btn-group" role="group" aria-label="Data baru">
+       <?php echo anchor('user/register', 'Register', array('class' => 'btn btn-outline-light')); ?>
+       <?php echo anchor('user/login', 'Login', array('class' => 'btn btn-outline-light')); ?>
+
+      </div>
+
+    <?php endif; ?>
+
+    <?php if($this->session->userdata('logged_in')) : ?>
+     <div class="btn-group" role="group" aria-label="Data baru">
+
+       <?php echo anchor('blog/create', 'Artikel Baru', array('class' => 'btn btn-outline-light')); ?>
+       <?php echo anchor('category/create', 'Kategori Baru', array('class' => 'btn btn-outline-light')); ?>
+       <?php echo anchor('user/logout', 'Logout', array('class' => 'btn btn-outline-light')); ?>
+     </div>
+    <?php endif; ?>

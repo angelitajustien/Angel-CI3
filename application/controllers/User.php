@@ -53,7 +53,9 @@ class User extends CI_Controller {
         $this->form_validation->set_rules('password', 'Password', 'required');
 
         if($this->form_validation->run() === FALSE){
+        	$this->load->view('header');
             $this->load->view('users/login', $data);
+            $this->load->view('footer');
         } else {
         // Get username
     	$username = $this->input->post('username');
@@ -84,5 +86,18 @@ class User extends CI_Controller {
     		}       
 		}
 	}
+
+	// Log user out
+    public function logout(){
+        // Unset user data
+        $this->session->unset_userdata('logged_in');
+        $this->session->unset_userdata('user_id');
+        $this->session->unset_userdata('username');
+
+        // Set message
+        $this->session->set_flashdata('user_loggedout', 'Anda sudah log out');
+
+        redirect('User/login');
+    }
 
 }
