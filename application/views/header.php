@@ -42,16 +42,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <a class="nav-link" href="<?php echo base_url('Blog/datatable') ?>">Blog Data Tables</a>
           </li>
         </ul>
-
-      <?php if($this->
-        session->userdata('user_loggedin')):?>
+      <?php if(!$this->session->userdata('logged_in')):?>
           <div class="btn-group" role="group" aria-label="Data baru">
       <?php echo anchor('User/login', 'Login', array('class' => 'btn btn-outline-light')); ?>
           </div>
       <?php endif; ?>
 
-      <?php if($this->
-        session->userdata('user_loggedin')):?>
+      <?php if($this->session->userdata('logged_in')):?>
           <div class="btn-group" role="group" aria-label="Data baru">
       <?php echo anchor('User/logout', 'Logout', array('class' => 'btn btn-outline-light')); ?>
           </div>

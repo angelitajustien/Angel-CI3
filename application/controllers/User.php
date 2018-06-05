@@ -68,15 +68,16 @@ class User extends CI_Controller {
     	if($user_id){
         // Buat session
         $user_data = array(
-            'user_id' => $user_id,
+            'user_id' => $user_id['user_id'],
             'username' => $username,
+            'level' => $user_id['level'],
             'logged_in' => true
         );
          $this->session->set_userdata($user_data);
 
         // Set message
         $this->session->set_flashdata('user_loggedin', 'You are now logged in');
-
+        
         redirect('Blog');
 	    } else {
         // Set message
