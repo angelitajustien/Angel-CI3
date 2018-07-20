@@ -4,12 +4,18 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class User_model extends CI_Model{
    public function register($enc_password){
        // Array data user
+        if($this->input->post('level') == null){
+          $level = '2';
+        }else{
+          $level = $this->input->post('level');
+        }
        $data = array(
            'nama' => $this->input->post('nama'),
            'email' => $this->input->post('email'),
            'username' => $this->input->post('username'),
            'password' => $enc_password,
-           'kodepos' => $this->input->post('kodepos')
+           'kodepos' => $this->input->post('kodepos'),
+           'level' => $level
        );
 
        // Insert user
@@ -33,6 +39,15 @@ class User_model extends CI_Model{
            return false;
        }
    }
-
-
+ public function update($id)
+   {
+    $set = $this->input->post();
+     $this->db->where('user_id',$id);
+    $this->db->update('users',$set);
+   }
+   public function delete($id)
+   {
+     $this->db->where('user_id',$id);
+    $this->db->delete('users');
+   }
 }

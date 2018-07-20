@@ -41,6 +41,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <li class="nav-item">
             <a class="nav-link" href="<?php echo base_url('Blog/datatable') ?>">Blog Data Tables</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="<?php echo base_url('User/user') ?>">Users</a>
+          </li>
         </ul>
       <?php if(!$this->session->userdata('logged_in')):?>
           <div class="btn-group" role="group" aria-label="Data baru">
@@ -80,10 +83,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <?php endif; ?>
 
     <?php if($this->session->userdata('logged_in')) : ?>
-     <div class="btn-group" role="group" aria-label="Data baru">
+     <div class="row">
+       <div class="col-md-6 mx-auto">
+       <div class="btn-group mx-auto my-3" role="group" aria-label="Data baru">
 
-       <?php echo anchor('blog/create', 'Artikel Baru', array('class' => 'btn btn-outline-light')); ?>
-       <?php echo anchor('category/create', 'Kategori Baru', array('class' => 'btn btn-outline-light')); ?>
-       <?php echo anchor('user/logout', 'Logout', array('class' => 'btn btn-outline-light')); ?>
+       <?php echo anchor('blog/add_view', 'Artikel Baru', array('class' => 'btn btn-outline-primary')); ?>
+       <?php echo anchor('category/create', 'Kategori Baru', array('class' => 'btn btn-outline-primary')); ?>
+       <?php echo anchor('user/logout', 'Logout', array('class' => 'btn btn-outline-primary')); ?>
+     </div>
+     </div>
      </div>
     <?php endif; ?>
